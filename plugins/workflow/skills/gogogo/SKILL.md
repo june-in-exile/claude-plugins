@@ -1,6 +1,6 @@
 ---
 name: gogogo
-description: June's feature flow. Grill the idea, record it as an OpenSpec change, slice it, then hand each slice to poteto in a new session.
+description: Take one feature from idea to implementation-ready slices. Grill the idea, record it as an OpenSpec change, slice it, then hand each slice to pstack's poteto-mode in a new session.
 disable-model-invocation: true
 ---
 

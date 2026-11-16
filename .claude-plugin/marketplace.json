@@ -16,7 +16,7 @@
       "name": "workflow",
       "source": "./plugins/workflow",
       "description": "Development-process skills: take a feature from idea to OpenSpec change to implementation-ready slices.",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }
