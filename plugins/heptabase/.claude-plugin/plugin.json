@@ -1,0 +1,12 @@
+{
+  "name": "heptabase",
+  "version": "0.2.0",
+  "description": "Heptabase skills: create or update note cards (/heptabase:card) and explain concepts on whiteboards (/heptabase:whiteboards).",
+  "author": {
+    "name": "june-in-exile",
+    "url": "https://github.com/june-in-exile"
+  },
+  "homepage": "https://github.com/june-in-exile/claude-plugins",
+  "repository": "https://github.com/june-in-exile/claude-plugins",
+  "license": "MIT"
+}

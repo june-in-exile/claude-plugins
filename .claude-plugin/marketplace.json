@@ -1,0 +1,16 @@
+{
+  "name": "june-in-exile",
+  "description": "Claude Code plugins by june-in-exile.",
+  "owner": {
+    "name": "june-in-exile",
+    "url": "https://github.com/june-in-exile"
+  },
+  "plugins": [
+    {
+      "name": "heptabase",
+      "source": "./plugins/heptabase",
+      "description": "Heptabase skills: create or update note cards and explain concepts on whiteboards.",
+      "version": "0.2.0"
+    }
+  ]
+}
