@@ -1,0 +1,12 @@
+{
+  "name": "workflow",
+  "version": "0.1.0",
+  "description": "Development-process skills: /workflow:gogogo takes a feature from idea to OpenSpec change to slices ready for implementation.",
+  "author": {
+    "name": "june-in-exile",
+    "url": "https://github.com/june-in-exile"
+  },
+  "homepage": "https://github.com/june-in-exile/claude-plugins",
+  "repository": "https://github.com/june-in-exile/claude-plugins",
+  "license": "MIT"
+}
