@@ -16,13 +16,13 @@
       "name": "workflow",
       "source": "./plugins/workflow",
       "description": "Development-process skills: take a feature from idea to OpenSpec change to implementation-ready slices.",
-      "version": "0.1.1"
+      "version": "0.1.2"
     },
     {
       "name": "speak",
       "source": "./plugins/speak",
       "description": "Voice-reply skill: answer every message aloud with macOS say, in short spoken replies, until told to stop.",
-      "version": "0.1.1"
+      "version": "0.1.2"
     }
   ]
 }
