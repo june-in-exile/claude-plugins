@@ -21,8 +21,8 @@
     {
       "name": "speak",
       "source": "./plugins/speak",
-      "description": "Voice-reply skill: answer dictated messages aloud with macOS say, in short spoken replies.",
-      "version": "0.1.0"
+      "description": "Voice-reply skill: answer every message aloud with macOS say, in short spoken replies, until told to stop.",
+      "version": "0.1.1"
     }
   ]
 }

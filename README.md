@@ -47,7 +47,7 @@ It builds on other skills, so install these too:
 
 A skill for talking with Claude by voice. It needs macOS: replies are spoken with the built-in `say` command and the Taiwanese Mandarin voice Meijia.
 
-- `/speak:voice-reply` — turn on voice replies for the rest of the session. Claude Code's `/voice` dictation sends plain text with no marker, so start a dictated message with "Claude" (or 🎤). Claude then answers it aloud in two to four short spoken sentences and shows the same text on screen, with any command or path you need to copy written below it. Messages without the marker get a normal text reply. It runs only when you call it.
+- `/speak:voice-reply` — turn on voice replies. From then on Claude answers every message aloud in two to four short spoken sentences and shows the same text on screen, with any command or path you need to copy written below it. Ask it to stop and it switches back to text; ask again and it speaks again. It runs only when you call it.
 
 ## License
 
