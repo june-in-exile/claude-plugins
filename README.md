@@ -8,6 +8,7 @@ Claude Code plugins by [june-in-exile](https://github.com/june-in-exile), publis
 claude plugin marketplace add june-in-exile/claude-plugins
 claude plugin install heptabase@june-in-exile
 claude plugin install workflow@june-in-exile
+claude plugin install speak@june-in-exile
 ```
 
 Install only the plugins you want. Inside Claude Code you can run the same commands as `/plugin marketplace add june-in-exile/claude-plugins` and `/plugin install heptabase@june-in-exile`.
@@ -18,6 +19,7 @@ To get later versions:
 claude plugin marketplace update june-in-exile
 claude plugin update heptabase@june-in-exile
 claude plugin update workflow@june-in-exile
+claude plugin update speak@june-in-exile
 ```
 
 ## Plugins
@@ -40,6 +42,12 @@ It builds on other skills, so install these too:
 - the `mattpocock-skills` plugin from the `claude-plugins-official` marketplace (grilling, domain-modeling, to-tickets, tdd, code-review, handoff)
 - the `pstack` plugin from the `cursor-plugins` marketplace (`/pstack:poteto-mode`, which implements each slice)
 - the OpenSpec CLI and its Claude skills (`openspec init --tools claude`), which provide `openspec-propose`, `openspec-update-change`, and `/opsx:archive`
+
+### speak
+
+A skill for talking with Claude by voice. It needs macOS: replies are spoken with the built-in `say` command and the Taiwanese Mandarin voice Meijia.
+
+- `/speak:voice-reply` — turn on voice replies for the rest of the session. Claude Code's `/voice` dictation sends plain text with no marker, so start a dictated message with "Claude" (or 🎤). Claude then answers it aloud in two to four short spoken sentences and shows the same text on screen, with any command or path you need to copy written below it. Messages without the marker get a normal text reply. It runs only when you call it.
 
 ## License
 

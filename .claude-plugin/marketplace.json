@@ -17,6 +17,12 @@
       "source": "./plugins/workflow",
       "description": "Development-process skills: take a feature from idea to OpenSpec change to implementation-ready slices.",
       "version": "0.1.1"
+    },
+    {
+      "name": "speak",
+      "source": "./plugins/speak",
+      "description": "Voice-reply skill: answer dictated messages aloud with macOS say, in short spoken replies.",
+      "version": "0.1.0"
     }
   ]
 }

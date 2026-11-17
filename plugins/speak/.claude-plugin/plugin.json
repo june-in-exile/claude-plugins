@@ -1,0 +1,12 @@
+{
+  "name": "speak",
+  "version": "0.1.0",
+  "description": "Voice-reply skill: /speak:voice-reply makes Claude answer dictated messages aloud with macOS say, in short spoken replies.",
+  "author": {
+    "name": "june-in-exile",
+    "url": "https://github.com/june-in-exile"
+  },
+  "homepage": "https://github.com/june-in-exile/claude-plugins",
+  "repository": "https://github.com/june-in-exile/claude-plugins",
+  "license": "MIT"
+}
