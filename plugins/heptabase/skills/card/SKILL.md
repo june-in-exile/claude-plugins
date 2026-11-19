@@ -70,7 +70,15 @@ Before writing, show the planned changes in chat, grouped by the card's sections
 - 「Staging 環境未就緒」→ 刪除（已於 11/15 解決）
 ```
 
-Ask "要照這樣寫入嗎？" and wait. After a yes, apply every change in one `edit_note_card_content` call, using `replace` edits anchored on short, unique spans copied from the read (not `overwrite`, so the parts you didn't touch, including protected regions, stay byte-identical). Keep the card's existing structure, wording style, and language. If the user adjusts the diff, apply their version.
+That code block is for plain-text clients (a terminal). In a graphical client that can render widgets, such as the Claude desktop app, draw the diff as a widget instead, because a monospace diff of long Chinese lines is hard to read there:
+
+- one row per change, numbered; a rewrite shows the old text struck through above the new text, an addition is marked as new;
+- a checkbox on every row, checked by default, so the user only unticks what they don't want;
+- one submit button that sends back, in a single reply, the numbers to write and the numbers to skip.
+
+An unchecked change is not written. A change the user didn't touch counts as allowed.
+
+In a plain-text client, ask "要照這樣寫入嗎？" and wait. After a yes (or, with the widget, after the submitted selection), apply every allowed change in one `edit_note_card_content` call, using `replace` edits anchored on short, unique spans copied from the read (not `overwrite`, so the parts you didn't touch, including protected regions, stay byte-identical). Keep the card's existing structure, wording style, and language. If the user adjusts the diff, apply their version.
 
 Then `render_cards` (or a text summary) to show the result.
 
