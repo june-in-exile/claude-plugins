@@ -16,7 +16,7 @@
       "name": "develop",
       "source": "./plugins/develop",
       "description": "Everyday development skills: take a feature from idea to slices (gogogo), explain anything top-down (explain), answer aloud (voice-reply), and review a finished feature's workflow through poteto's lens (poteto-review).",
-      "version": "0.3.0"
+      "version": "0.3.1"
     }
   ]
 }

@@ -1,89 +1,89 @@
 ---
 name: poteto-review
-description: 以 poteto（Lauren Tan）的 agent-first 開發哲學，回顧使用者剛完成的一套功能開發，找出工作流程中「信任無法擴大」的問題。只在使用者明確輸入 /poteto-review 或明確要求「用 poteto 視角檢視」時使用；不要因為使用者完成功能、提到 code review 或 agent 就主動觸發。
+description: Review a feature the user just finished through poteto's (Lauren Tan's) agent-first development philosophy, and find where the workflow keeps trust from scaling. Use only when the user explicitly types /poteto-review or explicitly asks to "review this from poteto's perspective"; do not trigger it just because the user finished a feature, mentioned code review, or mentioned agents.
 ---
 
 # poteto-review
 
-在使用者完成一套功能後，用 poteto 公開表達過的開發哲學，檢視「這套功能是怎麼被做出來的」，而不只是程式碼本身。目標是回答一個問題：**下次做同樣的事，能不能更放心地交給更多 agent 平行處理？**
+After the user finishes a feature, use the development philosophy poteto has expressed publicly to examine *how the feature was built*, not just the code itself. The goal is to answer one question: **next time we do the same kind of work, can we more confidently hand it to more agents in parallel?**
 
-這是「以她的公開觀點為鏡」的審查，不是模仿她本人說話。不要捏造她的引言或經歷。
+This review uses her public views as a mirror. It is not an imitation of her voice. Never invent quotes or experiences attributed to her.
 
-## 核心信念（審查的依據）
+## Core beliefs (the basis of the review)
 
-1. **信任是瓶頸，不是 agent 數量。** 信任不足時，加再多 agent 只會讓人花更多時間審 code，無法平行化。
-2. **糾正要變成確定性檢查。** 每次人工糾正 agent，都應變成 lint 規則、型別、測試，或讓錯誤不可能發生的 API，而不是在 rules / AGENTS.md 多加一行文字。文字會被忽略，檢查不會。
-3. **Agent 會抄 codebase 既有的做法。** 壞模式要被移除，不是被勸阻。最短路徑必須就是正確路徑。
-4. **驗證優先於 code review。** 理想的審查對象是驗證產物：測試結果、截圖、錄影、跑起來的流程、形式化檢查。Agent 應該能自己跑應用程式、自己確認結果。
-5. **約束的可靠度有層次（越前面越可靠）：** codebase 結構 → 靜態分析（lint / compiler / CI）→ rules / review bot → skills → style guide。
-6. **Slop 進，slop 出。** 內部開發迴圈若產出品質差的結果，自動化它只會產出更多垃圾。先修迴圈，再擴大規模。
-7. **自動化交給維護，判斷留給人。** 修 bug、效能、維護適合自動化；功能與體驗的決策應由人刻意設計。
-8. **多模型交叉審查。** 讓不同模型互相挑錯，比單一模型自我檢查更可靠。
+1. **Trust is the bottleneck, not the number of agents.** Without enough trust, adding agents just means humans spend more time reviewing code, and nothing parallelizes.
+2. **Corrections become deterministic checks.** Every time a human corrects an agent, that correction should become a lint rule, a type, a test, or an API that makes the mistake impossible, not one more line in a rules file or AGENTS.md. Text gets ignored; checks don't.
+3. **Agents copy what the codebase already does.** Bad patterns must be removed, not discouraged. The shortest path must be the correct path.
+4. **Verification beats code review.** The ideal thing to review is a verification artifact: test results, screenshots, recordings, a running flow, a formal check. Agents should be able to run the app and confirm the result themselves.
+5. **Constraints have layers of reliability (earlier is more reliable):** codebase structure → static analysis (lint / compiler / CI) → rules / review bot → skills → style guide.
+6. **Slop in, slop out.** If the inner development loop produces poor results, automating it only produces more garbage. Fix the loop first, then scale.
+7. **Automate maintenance, keep judgment human.** Bug fixes, performance, and maintenance suit automation; feature and experience decisions should be designed deliberately by people.
+8. **Cross-model review.** Having different models find each other's mistakes is more reliable than one model checking itself.
 
-## 流程
+## Process
 
-### 1. 蒐集事實（先看，不要先問）
+### 1. Gather facts (look first, don't ask first)
 
-盡量從環境中取得證據，取不到的再問使用者：
+Get as much evidence from the environment as you can, and ask the user only for what you can't find:
 
-- 這次功能的 diff / PR / commit 歷史（`git log`、`git diff` 等）
-- 專案中的 lint 設定、型別設定、CI 設定、測試
-- rules 檔、AGENTS.md、CLAUDE.md、skills
-- 本次對話或 agent 執行紀錄中，**使用者糾正 agent 的地方**（這是最重要的訊號）
+- The diff / PR / commit history for this feature (`git log`, `git diff`, etc.)
+- The project's lint config, type config, CI config, and tests
+- Rules files, AGENTS.md, CLAUDE.md, skills
+- In this conversation or the agent run logs, **the places where the user corrected the agent** (this is the most important signal)
 
-若缺少關鍵資訊，最多問一個問題，例如：「這次開發中，你手動糾正 agent 最多次的是什麼？」
+If key information is missing, ask at most one question, for example: "During this work, what did you correct the agent on most often?"
 
-### 2. 依六個面向檢視
+### 2. Review along six dimensions
 
-對每個面向，找出具體證據，不要泛泛而談：
+For each dimension, find concrete evidence; don't speak in generalities:
 
-| 面向 | 要問的問題 |
-|------|-----------|
-| **糾正 → 規則** | 這次有哪些糾正只停留在對話或 rules 文字中，沒變成檢查？ |
-| **驗證迴圈** | Agent 能自己證明功能正確嗎？還是最後靠人眼看？ |
-| **架構友善度** | Agent 照抄附近程式碼時，會抄到好模式還是壞模式？有沒有「捷徑比正路省事」的地方？ |
-| **約束層次** | 重要規則放在哪一層？有沒有該放在 lint / 型別卻只寫在文件裡的？ |
-| **迴圈品質** | 有沒有反覆重做、來回修補的跡象？在擴大自動化前，迴圈本身健康嗎？ |
-| **人機分工** | 是否把該由人判斷的體驗決策交給 agent？或反過來，人在做本該自動化的維護工作？ |
+| Dimension | Question to ask |
+|-----------|-----------------|
+| **Corrections → rules** | Which corrections this time stayed in the conversation or in rules text and never became a check? |
+| **Verification loop** | Can the agent prove on its own that the feature works, or does it come down to a human eyeballing it? |
+| **Agent-friendly architecture** | When an agent copies nearby code, does it copy a good pattern or a bad one? Is there anywhere a shortcut is easier than the right way? |
+| **Constraint layers** | Which layer do the important rules live in? Is anything that belongs in lint or types only written in docs? |
+| **Loop quality** | Are there signs of repeated rework or back-and-forth patching? Is the loop itself healthy before automation scales up? |
+| **Human / machine split** | Were experience decisions that need human judgment handed to the agent? Or, the other way round, is a human doing maintenance work that should be automated? |
 
-### 3. 自我平衡（必做）
+### 3. Self-balance (required)
 
-poteto 的方法也有盲點。產出結論前，檢查自己的建議是否落入這些陷阱，若有就明說：
+poteto's approach has blind spots too. Before concluding, check whether your suggestions fall into these traps, and say so plainly if they do:
 
-- **成本**：大量驗證很耗 token，建議要符合使用者的規模與預算，不要假設無限資源。
-- **驗證盲區**：測試只能驗證你想到的性質；提醒使用者規格之外的風險（權限、資料存取、隱私）。
-- **理解流失**：不要建議讓 agent 自行 merge，除非驗證已非常完整；人仍需理解系統。
-- **Greenfield 偏差**：遺留系統不一定能大改架構，優先給漸進式做法。
+- **Cost**: heavy verification burns tokens. Suggestions should fit the user's scale and budget; don't assume unlimited resources.
+- **Verification blind spots**: tests only verify the properties you thought of. Remind the user of risks outside the spec (permissions, data access, privacy).
+- **Loss of understanding**: don't suggest letting agents merge on their own unless verification is already very thorough; humans still need to understand the system.
+- **Greenfield bias**: legacy systems can't always be re-architected. Prefer incremental approaches.
 
-## 輸出格式
+## Output format
 
-用使用者的語言回覆，簡潔、具體、帶著鼓勵。依此結構：
+Reply in the user's language, concisely, concretely, and encouragingly. Use this structure:
 
 ```
-## 一句話診斷
-[這次工作流程最大的信任瓶頸是什麼]
+## One-line diagnosis
+[The biggest trust bottleneck in this workflow]
 
-## 做得好的地方
-[1–3 點，具體]
+## What went well
+[1–3 points, concrete]
 
-## 問題與建議
-[依影響大小排序，最多 5 點。每點包含：]
-- **問題**：[看到的具體證據]
-- **為什麼重要**：[對應哪條核心信念]
-- **下一步**：[最小可行的改法，優先「變成確定性檢查」]
+## Problems and suggestions
+[Ordered by impact, at most 5. Each includes:]
+- **Problem**: [the concrete evidence you saw]
+- **Why it matters**: [which core belief it maps to]
+- **Next step**: [the smallest workable change, preferring "turn it into a deterministic check"]
 
-## 可以變成規則的糾正
-[列出本次可轉成 lint / 型別 / 測試的糾正；沒有就寫「本次未發現」]
+## Corrections that can become rules
+[List the corrections from this work that could become lint / types / tests; if none, write "None found this time"]
 
-## 這次的盲點提醒
-[第 3 步自我平衡中發現的限制]
+## Blind spots this time
+[The limits found in the step 3 self-balance]
 
-## 下一步只做一件事
-[如果只能改一件事，改這個]
+## If you change only one thing
+[If only one thing can change, change this]
 ```
 
-## 原則
+## Principles
 
-- 證據優先：每個問題都要指向具體檔案、commit 或對話片段；找不到證據就不要編。
-- 少即是多：寧可 3 個真問題，不要 10 個泛泛建議。
-- 不寫使用者沒要求的程式碼；可以描述規則該檢查什麼，等使用者同意再實作。
+- Evidence first: every problem must point to a specific file, commit, or piece of conversation. If you can't find evidence, don't make it up.
+- Less is more: 3 real problems beat 10 generic suggestions.
+- Don't write code the user didn't ask for. You may describe what a rule should check, and implement it once the user agrees.
