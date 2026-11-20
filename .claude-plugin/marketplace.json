@@ -23,6 +23,12 @@
       "source": "./plugins/speak",
       "description": "Voice-reply skill: answer every message aloud with macOS say, in short spoken replies, until told to stop.",
       "version": "0.1.3"
+    },
+    {
+      "name": "explain",
+      "source": "./plugins/explain",
+      "description": "Top-down explanation skill: explain PRs, code or any concept starting from why it matters, then go deeper only when asked.",
+      "version": "0.1.0"
     }
   ]
 }

@@ -9,6 +9,7 @@ claude plugin marketplace add june-in-exile/claude-plugins
 claude plugin install heptabase@june-in-exile
 claude plugin install workflow@june-in-exile
 claude plugin install speak@june-in-exile
+claude plugin install explain@june-in-exile
 ```
 
 Install only the plugins you want. Inside Claude Code you can run the same commands as `/plugin marketplace add june-in-exile/claude-plugins` and `/plugin install heptabase@june-in-exile`.
@@ -20,6 +21,7 @@ claude plugin marketplace update june-in-exile
 claude plugin update heptabase@june-in-exile
 claude plugin update workflow@june-in-exile
 claude plugin update speak@june-in-exile
+claude plugin update explain@june-in-exile
 ```
 
 ## Plugins
@@ -48,6 +50,12 @@ It builds on other skills, so install these too:
 A skill for talking with Claude by voice. It needs macOS: replies are spoken with the built-in `say` command and the Taiwanese Mandarin voice Meijia.
 
 - `/speak:voice-reply` — turn on voice replies. From then on Claude answers every message aloud in two to four short spoken sentences and shows exactly the same spoken-style text on screen. Ask it to stop and it switches back to text; ask again and it speaks again. It runs only when you call it.
+
+### explain
+
+A skill for explanations that start from the big picture.
+
+- `/explain:top-down` — explain a PR, code, a design, or any concept top-down: first one sentence on what it is and why it exists, then what it means for your decision, then at most a few key points. Tables, file paths and code come only when you ask to go deeper, one level at a time. Claude also uses it on its own whenever you ask it to explain something.
 
 ## License
 

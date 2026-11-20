@@ -1,0 +1,12 @@
+{
+  "name": "explain",
+  "version": "0.1.0",
+  "description": "Top-down explanation skill: explain a PR, code, design or any concept starting from why it exists and what it means for your decision, then go one level deeper only when asked.",
+  "author": {
+    "name": "june-in-exile",
+    "url": "https://github.com/june-in-exile"
+  },
+  "homepage": "https://github.com/june-in-exile/claude-plugins",
+  "repository": "https://github.com/june-in-exile/claude-plugins",
+  "license": "MIT"
+}
