@@ -16,7 +16,7 @@
       "name": "develop",
       "source": "./plugins/develop",
       "description": "Everyday development skills: take a feature from idea to slices (gogogo), explain anything top-down (top-down), and answer aloud (voice-reply).",
-      "version": "0.1.2"
+      "version": "0.1.3"
     }
   ]
 }

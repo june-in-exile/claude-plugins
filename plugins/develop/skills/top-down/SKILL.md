@@ -1,6 +1,6 @@
 ---
 name: top-down
-description: Explain anything top-down. Start with the big idea and why it matters, then go one level deeper each time the user asks. Use whenever the user asks you to explain, describe, walk through, or teach something, in any field. That covers PRs, code, architecture and errors, and also cryptography, psychology, biology, hardware design, economics, history or any other concept. Examples are "explain the context of this PR", "what does this code do", "what is X", "why does this happen" and "teach me Y". Use it even when the user doesn't say "top-down".
+description: Explain anything top-down, big idea first, then one level deeper per follow-up. Use whenever the user asks to explain, walk through or teach something in any field, from a PR or code to biology or cryptography.
 ---
 
 # Top-down explanation
