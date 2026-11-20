@@ -1,5 +1,5 @@
 ---
-name: top-down
+name: explain
 description: Explain anything top-down, big idea first, then one level deeper per follow-up. Use whenever the user asks to explain, walk through or teach something in any field, from a PR or code to biology or cryptography.
 ---
 

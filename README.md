@@ -34,7 +34,7 @@ Skills for working with [Heptabase](https://heptabase.com). They need the Heptab
 Skills I use while developing.
 
 - `/develop:gogogo` — take one feature from an idea to implementation-ready slices: grill the idea and record decisions (glossary, ADRs), write it up as an [OpenSpec](https://github.com/Fission-AI/OpenSpec) change, get your approval on the decisions and test seams, slice the tasks, then print one prompt per slice to paste into a new session. It runs only when you call it.
-- `/develop:top-down` — explain anything top-down, in any field: a PR or code, but also cryptography, psychology, biology or hardware design. The first reply is a plain definition, why it matters to you, and at most a few key points. Details come only when you ask, one level at a time, with diagrams built up step by step. It draws on the `teach` skill from pstack. Claude also uses it on its own whenever you ask it to explain something.
+- `/develop:explain` — explain anything top-down, in any field: a PR or code, but also cryptography, psychology, biology or hardware design. The first reply is a plain definition, why it matters to you, and at most a few key points. Details come only when you ask, one level at a time, with diagrams built up step by step. It draws on the `teach` skill from pstack. Claude also uses it on its own whenever you ask it to explain something.
 - `/develop:voice-reply` — turn on voice replies. From then on Claude answers every message aloud in two to four short spoken sentences and shows exactly the same spoken-style text on screen. Ask it to stop and it switches back to text; ask again and it speaks again. It runs only when you call it.
 
 `/develop:gogogo` builds on other skills, so install these too:
