@@ -67,11 +67,11 @@ Write every card in the user's language. The title is an H1, `<plain name>（<co
 
 1. **Source**: the file path, or the paper section.
 2. **Summary**: one or two sentences saying what entity or concept this card IS, with one concrete example from the subject. The reader should be able to stop here and still place the card.
-3. **Naming caveat**, when the code name misleads or the thing goes by another name elsewhere: map every name the reader will meet (UI label, code name, the card title in the user's language) and say what the thing really is, as a sub-bullet under the summary. For example, a `DataSource` the UI lists as CONNECTIONS, or a 數據目錄 card whose UI tab is Catalog. A reader who knows the product from its UI cannot place a card titled with a translated or code name until the UI name is on it.
-4. **Relationships**: how this card relates to its neighbours, stated with cardinality and trigger. Cardinality: "one source has many pipelines; each pipeline moves one upstream table into one catalog table." Trigger: what sets it in motion (a scheduler, a button, a call from another card), cited like an edge. This is the part the reader came for; the edges show that a relationship exists, the card says what shape it has.
+3. **Naming caveat**, when the code name misleads or the thing goes by another name elsewhere: map every name the reader will meet (UI label, code name, the card title in the user's language) and say what the thing really is, as a sub-bullet under the summary. For example, a `Webhook` the UI lists as INTEGRATIONS, or a 投遞紀錄 card whose UI tab is Activity. A reader who knows the product from its UI cannot place a card titled with a translated or code name until the UI name is on it.
+4. **Relationships**: how this card relates to its neighbours, stated with cardinality and trigger. Cardinality: "one webhook has many deliveries; each delivery sends one event to one URL." Trigger: what sets it in motion (a scheduler, a button, a call from another card), cited like an edge. This is the part the reader came for; the edges show that a relationship exists, the card says what shape it has.
 5. **Detail**: what it stores or does, as bullets, each one placed under the sentence that introduces it.
 
-Every card is **grounded**: each term it uses is either defined on this card or is the title of another card on the board. Mention that card (syntax in `hepta_markdown`) instead of re-explaining it, which also shortens the sentence: "it only says how to connect; moving data is @Pipeline's job". A term that is neither, cut, together with the sentence that needs it. An implementation detail the reader cannot place (an internal cache table, a field path whose parent was never introduced) is noise, however true.
+Every card is **grounded**: each term it uses is either defined on this card or is the title of another card on the board. Mention that card (syntax in `hepta_markdown`) instead of re-explaining it, which also shortens the sentence: "it only says where to send; sending is @Delivery's job". A term that is neither, cut, together with the sentence that needs it. An implementation detail the reader cannot place (an internal cache table, a field path whose parent was never introduced) is noise, however true.
 
 Grow detail progressively: introduce a concept in a sentence first, then expand it in sub-bullets under that sentence. A sub-bullet may also define a term the sentence above just used, when no card on the board defines it.
 
@@ -86,18 +86,18 @@ The overview card states:
 A grounded card, for reference:
 
 ```
-# 數據來源（DataSource）
+# 通知設定（Webhook）
 
-出處：backend/app/sources/models.py 的 DataSource、sources/service.py
-本質上是一個上游系統的連線設定（位置、帳密），例如 SAP ERP。
-  - 名字容易誤會：它其實是一筆「連線」，叫 Connection 比較貼切。
-一個來源可以長出多條 @數據管線（Pipeline / SyncRun），每條搬一個 stream。
-  - stream 是上游裡的一張表，例如 `erp-sap.MARA`。
-按下 Create source 會建立一筆連線，存三樣：
-- source_type：選的 TYPE 卡片
-- config_json：表單的 config 欄位（host、port…）
-- encrypted_secrets：表單的 secret 欄位，加密存放
-它只描述怎麼連，自己不搬資料。
+出處：app/webhooks/models.py 的 Webhook、webhooks/service.py
+本質上是一筆「事件發生時要通知誰」的設定，例如訂單成立時通知倉庫系統。
+  - 名字容易誤會：介面上它列在 INTEGRATIONS 底下，不叫 Webhook。
+一筆設定可以產生多筆 @投遞紀錄（Delivery），每筆把一個事件送到它的網址。
+  - 事件是系統裡發生的一件事，例如 `order.created`。
+按下 Add webhook 會建立一筆設定，存三樣：
+- url：要通知的網址
+- events：勾選的事件種類
+- encrypted_secret：簽章用的密鑰，加密存放
+它只描述要送去哪裡，自己不送。
 ```
 
 ## Build order
