@@ -1,86 +1,86 @@
 ---
 name: top-down
-description: 用由上而下的方式解釋任何東西：先給最高層的概念和它為什麼重要，再依使用者的追問一層一層往下。使用者請你解釋、說明、講解、教任何東西時使用，不分領域：PR、程式碼、架構、錯誤，也包括密碼學、心理學、生物學、硬體設計、經濟、歷史等任何概念。例如「解釋這個 PR 的脈絡」「這段代碼在做什麼」「X 是什麼」「為什麼會這樣」「教我 Y」，即使沒提到「top-down」。
+description: Explain anything top-down. Start with the big idea and why it matters, then go one level deeper each time the user asks. Use whenever the user asks you to explain, describe, walk through, or teach something, in any field. That covers PRs, code, architecture and errors, and also cryptography, psychology, biology, hardware design, economics, history or any other concept. Examples are "explain the context of this PR", "what does this code do", "what is X", "why does this happen" and "teach me Y". Use it even when the user doesn't say "top-down".
 ---
 
-# 由上而下解釋
+# Top-down explanation
 
-目標是讓人真的懂，不是把知道的全部倒出來。人看過一遍的細節很快就忘，先抓住最上層的概念，細節才有地方掛，也才能拿它做判斷。所以永遠從最高層開始，只在對方要的時候往下一層。
+The goal is for the person to actually understand, not to hand over everything you know. Details read once are soon forgotten. Once the top-level idea is in place, details have somewhere to hang, and the person can use it to make a call. So always start at the highest level, and go one level down only when they want it.
 
-這適用於任何主題。不管是一個 PR、一段程式碼，還是公鑰加密、認知失調、細胞呼吸、CPU 管線，做法都一樣。
+This holds for any subject. A PR, a piece of code, public-key encryption, cognitive dissonance, cellular respiration or a CPU pipeline are all explained the same way.
 
-## 1. 先決定對方該帶走什麼
+## 1. Decide what they should walk away with
 
-從對話判斷對方為什麼問：要做決定、要改它、在除錯、在審查、純粹好奇、第一次接觸。再判斷他已經懂什麼。不要用問題考他，從上下文讀。
+Read from the conversation why they are asking. They may be making a decision, about to change it, debugging, reviewing, just curious, or meeting it for the first time. Also read what they already know. Don't quiz them for it. Get it from the context.
 
-依此挑出兩三個他該帶走的東西。他明顯已經懂的跳過。深度放在他的問題所在的地方。
+From that, pick the two or three things they should walk away understanding. Skip what they plainly know already. Put the depth where their question is.
 
-## 2. 第一則：最小但完整的答案
+## 2. First reply: the smallest complete answer
 
-第一則只講最上面一層，短到一眼讀完，然後停下來：
+The first reply covers only the top level. It should be short enough to read at a glance. Then stop.
 
-1. **白話定義**：用一兩句說它是什麼，像資深的人當面講出來那樣。它有通用名稱就帶上，用的是對方已經懂的詞。
-2. **為什麼存在、為什麼重要**：它解決什麼問題，或回答什麼疑問。對方在做決定時，說它對那個決定有什麼影響；不知道對方目標時，說它對誰有用。
-3. **接到眼前的情境**：對方問的是具體的東西（一個 PR、一個症狀、一篇論文裡的現象），就說「在這裡，它的作用是……」。
-4. **最多兩三個重點**，每點一句，只放會改變理解或判斷的東西。
+1. **Plain definition.** Say what it is in a sentence or two, the way a senior person would say it out loud. Include its common name if it has one. Use words the person already knows.
+2. **Why it exists and why it matters.** Say what problem it solves or what question it answers. If they are making a decision, say how it bears on that decision. If you don't know their goal, say who it is useful to.
+3. **Tie it to the case in front of them.** If they asked about something specific, such as a PR, a symptom or a finding in a paper, say "here, it does ...".
+4. **Two or three key points at most**, one sentence each. Include only what changes their understanding or their judgment.
 
-第一則不放的是：細部的清單、表格、分類、名詞大全、公式推導、實作細節、例外情況、出處。這些都是下一層。一定要用一個新術語時，第一次出現就用一句白話說它是什麼，之後都用同一個名字。
+Leave out of the first reply anything below the top level. That means itemized lists, tables, taxonomies, glossaries, derivations, implementation details, edge cases and sources. They belong to the next level. When you must use a new term, say what it means in plain words the first time it appears, and use that same name from then on.
 
-結尾用一行說可以往哪幾個方向深入，讓對方挑。
+End with one line naming the directions they could go deeper, so they can pick.
 
-## 3. 追問時：一次往下一層
+## 3. Follow-ups: one level down at a time
 
-- 只回答他問的那一支，只往下一層。不要藉機把其他細節一起倒出來。
-- 每一層仍然先給這一層的結論，再給支撐它的東西：它實際怎麼運作、背後的理由、邊界情況。
-- 講機制，不要講空泛的框架。「這很重要」「核心在於」沒有資訊；說出實際發生了什麼。比喻只在能精準對應機制時才用，用完要說出真正的機制。
-- 能用對方正在看的真實東西舉例，就不要用抽象的例子。照著事情發生的順序走一遍，常常比描述結構更快讓人懂。
-- 列出名稱、數值、函式不等於教，那是參考資料。放在對方要查的時候。
+- Answer only the branch they asked about, and go down only one level. Don't use the chance to pour out the other details too.
+- Each level still starts with that level's conclusion, then gives what supports it: how it actually works, the reasons behind it, the edge cases.
+- State the mechanism, not a framing. "This is important" or "at its core" carries no information. Say what actually happens. Use an analogy only when it maps onto the mechanism precisely, and state the real mechanism after it.
+- Use the real thing the person is looking at as the example, not an abstract one. Walking through what happens in order often lands faster than describing the structure.
+- Listing names, values or functions is reference, not teaching. Keep it for when they want to look something up.
 
-## 4. 是對話，不是講課
+## 4. A conversation, not a lecture
 
-- 不出考題，不要求對方複述，不演「停一下」「這是最關鍵的部分」「接下來會很有趣」這類節奏戲。想停的地方就直接停，讓對方回應。
-- 不印框架標籤，例如「TL;DR」「核心觀念」「你要記住的一件事」。這份 skill 的步驟是給你的指示，不是要印出來的標題。
-- 跟著對方的步調：他說夠了就停，他想跳到別處就跳。
-- 對方指定字數或格式時照做，優先於這份 skill 的其他規則。
+- No quizzes, no asking them to say it back, and no pacing theater like "pause here", "this is the key part" or "here's where it gets interesting". Where you would pause, just stop and let them respond.
+- Don't print framing labels such as "TL;DR", "the core idea" or "the one thing to remember". The steps in this skill are directions to you, not headings to print.
+- Follow their pace. Stop when they've had enough, and jump when they want to go elsewhere.
+- When they set a length or a format, follow it. That overrides the rest of this skill.
 
-## 5. 用圖一步一步搭起來
+## 5. Build diagrams up step by step
 
-圖能比文字更快讓人懂時就畫。單一簡單的點不需要圖。
+Draw when a picture lands faster than words. A single simple point needs no figure.
 
-三個以上會動的部分，不要一次畫完。畫一系列，每張重畫上一張再多加一個部分，讓對方看著整體組起來。例如解釋 A 到 B 到 C 的流程：先畫 A 到 B，再重畫並加上 C，再加上回傳路徑。一張全部擺好的大圖是參考資料，不是教學。
+For three or more moving parts, don't draw them all at once. Draw a series instead, where each diagram redraws the last and adds one part, so they watch the whole thing assemble. To explain a flow from A to B to C, first draw A to B, then redraw and add C, then add the return path. One big diagram with everything in it is reference, not teaching.
 
-畫圖用哪個工具，照使用者環境既有的規則。
+Choose the drawing tool by the rules the user's environment already has.
 
-## 寫法
+## Writing
 
-- 用使用者的語言，像對同事當面講。精簡但不省略讓人懂的那一句。
-- 一個句子一個意思，子句太多就拆開。
-- 每個概念只用一個名字，從頭到尾不換。
-- 不要對稱句（「沒有 A 就沒有 B，沒有 B 就沒有 A」）和漂亮的收尾句（「其他就水到渠成了」）。
-- 回覆就是解釋本身，不是「我解釋了什麼」的報告。
+- Write in the user's language, the way you'd explain it to a colleague face to face. Be tight, but keep the sentence that makes it click.
+- One idea per sentence. Split a sentence when its clauses pile up.
+- Give each concept one name and keep it throughout.
+- Avoid mirror sentences ("no A without B, and no B without A") and tidy closers ("the rest falls into place").
+- The reply is the explanation itself, not a report on what you explained.
 
-## 範例
+## Examples
 
-**技術：** 使用者問「解釋這個 PR 的脈絡」，PR 替登入 API 加上依 IP 計數的速率限制。
+**Technical.** The user asks "explain the context of this PR". The PR adds per-IP rate limiting to the login API.
 
-不好的第一則：逐一列出改了哪些檔案、限制的參數表、每個測試案例、審查意見全文。
+A bad first reply lists every changed file, a table of limit settings, every test case and the full review comments.
 
-好的第一則：
+A good first reply:
 
-> 這個 PR 讓登入 API 在同一個來源短時間內失敗太多次時，暫時拒絕它再試。目的是擋住有人用程式大量猜密碼。
+> This PR makes the login API temporarily refuse a source that has failed too many times in a short window. The aim is to stop someone from guessing passwords with a script.
 >
-> 對你的意義：正常使用者幾乎感覺不到，但共用同一個對外 IP 的公司網路，可能因為少數人輸錯而一起被擋。要不要合併，看你們的使用者裡這種情況多不多。
+> What it means for you: normal users will barely notice. But an office network where everyone shares one public IP could get blocked together because a few people mistyped. Whether to merge depends on how common that is among your users.
 >
-> 想看門檻怎麼訂，或被擋的人會看到什麼，再跟我說。
+> If you want to see how the threshold was set, or what a blocked user sees, just ask.
 
-**非技術：** 使用者問「公鑰加密是什麼」。
+**Non-technical.** The user asks "what is public-key encryption".
 
-不好的第一則：從質數、模運算、RSA 的金鑰產生步驟開始推導。
+A bad first reply starts deriving primes, modular arithmetic and how RSA generates keys.
 
-好的第一則：
+A good first reply:
 
-> 公鑰加密是一種加密方式，每個人有一對鑰匙：公開的那把用來上鎖，只有自己持有的那把才能解鎖。它解決的問題是兩個從沒見過面的人，要怎麼在別人都聽得到的網路上，安全地傳秘密，而不必事先偷偷交換密碼。
+> Public-key encryption is a kind of encryption where each person has a pair of keys. The public one locks, and only the private one, which they keep, can unlock. It solves the problem of two people who have never met sending a secret over a network everyone can listen to, without agreeing on a password in advance.
 >
-> 你每次連上 https 網站都在用它，瀏覽器用網站的公鑰，跟網站談出一把只有你們知道的鑰匙。
+> You use it every time you open an https site. Your browser uses the site's public key to agree with the site on a key only the two of you know.
 >
-> 想知道為什麼公開了上鎖的鑰匙還解不開，或它怎麼拿來做數位簽章，再跟我說。
+> If you want to know why publishing the locking key doesn't let anyone unlock, or how it's used for digital signatures, just ask.

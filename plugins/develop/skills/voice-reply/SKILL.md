@@ -1,41 +1,41 @@
 ---
 name: voice-reply
-description: 開啟語音回覆模式：之後每則回覆都用 macOS say 唸出簡短回答，直到使用者叫停。
+description: Turn on voice-reply mode. From then on every reply is a short answer read aloud with macOS say, until the user says to stop.
 disable-model-invocation: true
 ---
 
-# 語音回覆模式
+# Voice-reply mode
 
-這個 session 從現在起進入語音回覆模式：之後的每一則回覆都用說的，不必看訊息有沒有標記。
+From now on this session is in voice-reply mode. Every reply is spoken, whether or not the message is marked for it.
 
-模式有兩個狀態，切換只看使用者明確說的話：
+The mode has two states. Switch between them only on what the user explicitly says:
 
-- **語音開啟**：使用者叫起這個 skill 時進入。使用者說要你停止用語音回覆時，切到語音關閉，並用文字確認一句。
-- **語音關閉**：照這個 session 平常的文字方式回答，不呼叫 `say`。使用者說要你重新用語音回覆時，切回語音開啟，並用說的確認一句。
+- **Voice on.** Entered when the user invokes this skill. When the user tells you to stop replying by voice, switch to voice off and confirm in one line of text.
+- **Voice off.** Answer in this session's normal text style and don't call `say`. When the user tells you to reply by voice again, switch back to voice on and confirm in one spoken sentence.
 
-使用者多半用 `/voice` 聽寫說話，聽寫會出錯，同音字、漏掉的標點和口語贅字都很常見。按上下文理解使用者真正想問的，不要把聽寫錯字當成真正的問題。
+The user usually talks through `/voice` dictation, and dictation makes mistakes. Homophones, missing punctuation and spoken filler words are common. Work out what the user really means from the context, and don't treat a dictation error as the real question.
 
-## 語音開啟時怎麼回
+## How to reply while voice is on
 
-需要的工具照常用，例如讀程式、跑指令。查完之後，回覆只有一段**口語答案**，畫面和語音用的是同一段，一字不差：
+Use tools as usual, for example to read code or run commands. After that, the reply is a single **spoken answer**. The screen and the speech use the same text, word for word:
 
-1. 先把口語答案原封不動輸出成文字回覆。
-2. 再在同一則回覆的最後，用 `say` 唸出同一段文字，讓使用者可以邊看邊聽：
+1. First output the spoken answer, unchanged, as the text reply.
+2. Then, at the end of the same reply, read the same text aloud with `say`, so the user can read along while listening:
 
    ```bash
    say -v Meijia -r 260 <<'EOF'
-   （同一段口語答案）
+   (the same spoken answer)
    EOF
    ```
 
-3. 唸完就結束這一則。
+3. Stop the reply once it has been spoken.
 
-一定要用 heredoc 把內容餵給 `say`，內容裡的引號和符號才不會弄壞指令。
+Always feed the text to `say` through a heredoc, so quotes and symbols in it can't break the command.
 
-口語答案寫給耳朵聽，畫面上也照這樣寫：
+Write the spoken answer for the ear, and show it on screen the same way:
 
-- **簡短**：兩到四句，只回答問的那件事。答案確實需要更多時，先講結論，再問使用者要不要聽細節。
-- **聚焦**：不要順便提延伸議題、替代方案或附帶的注意事項。
-- **口語**：用繁體中文寫完整的句子，數字和英文縮寫寫成唸出來的樣子，例如「零點一點三版」。不要 Markdown、清單符號、程式碼、檔案路徑或網址；這些換成口語說法，例如「iam 元件的 appliance 設定檔」。
+- **Short.** Two to four sentences, answering only what was asked. When the answer really needs more, give the conclusion first, then ask whether the user wants the details.
+- **Focused.** Don't bring up side topics, alternatives or caveats along the way.
+- **Spoken.** Write complete sentences in Traditional Chinese, since the Meijia voice reads Taiwanese Mandarin. Write numbers and English abbreviations the way they are said aloud, for example 「零點一點三版」 for version 0.1.3. No Markdown, bullets, code, file paths or URLs. Say them in spoken form instead, for example 「專案根目錄的設定檔」 for a config file path.
 
-答案非得要使用者照抄某樣東西才能用時，例如一行指令，口語答案裡說一句「這需要照抄一行指令，要我切回文字模式貼給你嗎」，等使用者回答。
+When the answer only works if the user copies something exactly, such as a command, say in the spoken answer that it needs a command copied, and ask whether to switch back to text mode to paste it. Then wait for the answer.
