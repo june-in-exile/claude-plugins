@@ -55,7 +55,7 @@ A skill for talking with Claude by voice. It needs macOS: replies are spoken wit
 
 A skill for explanations that start from the big picture.
 
-- `/explain:top-down` — explain a PR, code, a design, or any concept top-down: first one sentence on what it is and why it exists, then what it means for your decision, then at most a few key points. Tables, file paths and code come only when you ask to go deeper, one level at a time. Claude also uses it on its own whenever you ask it to explain something.
+- `/explain:top-down` — explain anything top-down, in any field: a PR or code, but also cryptography, psychology, biology or hardware design. The first reply is a plain definition, why it matters to you, and at most a few key points. Details come only when you ask, one level at a time, with diagrams built up step by step. It draws on the `teach` skill from pstack. Claude also uses it on its own whenever you ask it to explain something.
 
 ## License
 

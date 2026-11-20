@@ -27,8 +27,8 @@
     {
       "name": "explain",
       "source": "./plugins/explain",
-      "description": "Top-down explanation skill: explain PRs, code or any concept starting from why it matters, then go deeper only when asked.",
-      "version": "0.1.0"
+      "description": "Top-down explanation skill: explain anything, from a PR to cryptography or biology, starting from the big idea and why it matters, then going deeper only when asked.",
+      "version": "0.2.0"
     }
   ]
 }

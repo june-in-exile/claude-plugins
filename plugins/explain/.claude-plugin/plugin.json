@@ -1,6 +1,6 @@
 {
   "name": "explain",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Top-down explanation skill: explain a PR, code, design or any concept starting from why it exists and what it means for your decision, then go one level deeper only when asked.",
   "author": {
     "name": "june-in-exile",
