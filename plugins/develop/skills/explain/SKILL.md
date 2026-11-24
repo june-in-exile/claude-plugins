@@ -22,6 +22,7 @@ The first reply covers only the top level. It should be short enough to read at 
 1. **Plain definition.** Say what it is in a sentence or two, the way a senior person would say it out loud. Include its common name if it has one. Use words the person already knows.
 2. **Why it exists and why it matters.** Say what problem it solves or what question it answers. If they are making a decision, say how it bears on that decision. If you don't know their goal, say who it is useful to.
 3. **Tie it to the case in front of them.** If they asked about something specific, such as a PR, a symptom or a finding in a paper, say "here, it does ...".
+   When the subject is a risk, a bug or a review finding, also say whether it exists in the system today or only in a proposal, and whose.
 4. **Two or three key points at most**, one sentence each. Include only what changes their understanding or their judgment.
 
 Leave out of the first reply anything below the top level. That means itemized lists, tables, taxonomies, glossaries, derivations, implementation details, edge cases and sources. They belong to the next level. When you must use a new term, say what it means in plain words the first time it appears, and use that same name from then on.
@@ -58,6 +59,9 @@ Choose the drawing tool by the rules the user's environment already has.
 - Give each concept one name and keep it throughout.
 - Avoid mirror sentences ("no A without B, and no B without A") and tidy closers ("the rest falls into place").
 - The reply is the explanation itself, not a report on what you explained.
+- **Translate before you relay.** When you explain someone else's review, report or message, put it in the person's words, not the source's. A term from the source that the person has not used themselves gets a plain-words definition the first time, or is replaced by what it does.
+- **Tell a risk as a scenario.** For a risk, a bug or an attack, start with one concrete story: who acts, through which path, and what goes wrong. "A script holding your login sends a run that says the plan is approved, and the import runs with no one approving it" lands. "The caller can supply graph state" does not.
+- **A "what is X?" follow-up means X was undefined.** Define X in plain words, and don't introduce another unfamiliar term in the same reply. If the answer needs one, explain with what the thing does instead.
 
 ## Examples
 

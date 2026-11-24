@@ -1,6 +1,6 @@
 {
   "name": "develop",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "Skills for everyday development: /develop:gogogo takes a feature from idea to implementation-ready slices, /develop:explain explains anything from the big idea down, /develop:voice-reply answers aloud with macOS say, /develop:poteto-review reviews how a finished feature was built through poteto's agent-first lens.",
   "author": {
     "name": "june-in-exile",
