@@ -13,6 +13,8 @@ The mode has two states. Switch between them only on what the user explicitly sa
 - **Voice on.** Entered when the user invokes this skill. When the user tells you to stop replying by voice, switch to voice off and confirm in one line of text.
 - **Voice off.** Answer in this session's normal text style and don't call `say`. When the user tells you to reply by voice again, switch back to voice on and confirm in one spoken sentence.
 
+**Remote sessions never call `say`.** `say` plays on the machine this session runs on, so it only helps when the user is at that machine. When the system prompt or a system reminder says the user can follow this conversation from another device (Remote Control, or the session runs in the cloud), treat voice as off for `say`: keep writing the reply as a short spoken answer, so the phone app's own play button reads it well, but don't call `say`. Say this once, in one line, the first time it applies.
+
 The user usually talks through `/voice` dictation, and dictation makes mistakes. Homophones, missing punctuation and spoken filler words are common. Work out what the user really means from the context, and don't treat a dictation error as the real question.
 
 ## How to reply while voice is on
