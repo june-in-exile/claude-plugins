@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Gogogo
 
-Take one feature from an idea to slices that are ready for poteto. Steps 1 to 4 run in this one context window. If it fills up mid-way, run `/mattpocock-skills:handoff` and continue in a new session; never compact in the middle.
+Take one feature from an idea to slices that are ready for poteto. Steps 1 to 4 run in this one context window. If it fills up mid-way, run `/develop:handoff` and continue in a new session; never compact in the middle.
 
 **The repo's own rules win.** Before step 1, read the repo's `CLAUDE.md` / `AGENTS.md` and anything it points at for: where ADRs live, where the glossary lives, the issue tracker and its labels, and the verification commands. Where this skill and the repo disagree, follow the repo and say so in one line.
 

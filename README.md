@@ -37,10 +37,11 @@ Skills I use while developing.
 - `/develop:explain` — explain anything top-down, in any field: a PR or code, but also cryptography, psychology, biology or hardware design. The first reply is a plain definition, why it matters to you, and at most a few key points. Details come only when you ask, one level at a time, with diagrams built up step by step. It draws on the `teach` skill from pstack. Claude also uses it on its own whenever you ask it to explain something.
 - `/develop:voice-reply` — turn on voice replies. From then on Claude answers every message aloud in two to four short spoken sentences and shows exactly the same spoken-style text on screen. Ask it to stop and it switches back to text; ask again and it speaks again. It runs only when you call it.
 - `/develop:poteto-review` — after you finish a feature, review how it was built (not just the code) through the agent-first ideas poteto (Lauren Tan) has shared publicly: which corrections should become lint rules, types or tests, whether agents can verify their own work, and what to change so more of the next feature can go to agents in parallel. It runs only when you call it.
+- `/develop:handoff <session-name> [focus]` — summarize what this session did, what is in progress, what is waiting on your answer, and what comes next, then send it to another open Claude Code session by name. It checks git instead of trusting memory, references commits and docs instead of copying them, and asks the receiver to verify the state before starting. If no session has that name, it asks which one you mean, or gives you a file path to paste into the new session. Based on the `handoff` skill from mattpocock-skills. It runs only when you call it.
 
 `/develop:gogogo` builds on other skills, so install these too:
 
-- the `mattpocock-skills` plugin from the `claude-plugins-official` marketplace (grilling, domain-modeling, to-tickets, tdd, code-review, handoff)
+- the `mattpocock-skills` plugin from the `claude-plugins-official` marketplace (grilling, domain-modeling, to-tickets, tdd, code-review)
 - the `pstack` plugin from the `cursor-plugins` marketplace (`/pstack:poteto-mode`, which implements each slice)
 - the OpenSpec CLI and its Claude skills (`openspec init --tools claude`), which provide `openspec-propose`, `openspec-update-change`, and `/opsx:archive`
 

@@ -1,7 +1,7 @@
 {
   "name": "develop",
-  "version": "0.3.3",
-  "description": "Skills for everyday development: /develop:gogogo takes a feature from idea to implementation-ready slices, /develop:explain explains anything from the big idea down, /develop:voice-reply answers aloud with macOS say, /develop:poteto-review reviews how a finished feature was built through poteto's agent-first lens.",
+  "version": "0.4.0",
+  "description": "Skills for everyday development: /develop:gogogo takes a feature from idea to implementation-ready slices, /develop:explain explains anything from the big idea down, /develop:voice-reply answers aloud with macOS say, /develop:poteto-review reviews how a finished feature was built through poteto's agent-first lens, and /develop:handoff sends this session's progress to a new session so it can continue the work.",
   "author": {
     "name": "june-in-exile",
     "url": "https://github.com/june-in-exile"
