@@ -1,6 +1,6 @@
 {
   "name": "heptabase",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Heptabase skills: create or update note cards (/heptabase:card) and explain concepts on whiteboards (/heptabase:whiteboards).",
   "author": {
     "name": "june-in-exile",

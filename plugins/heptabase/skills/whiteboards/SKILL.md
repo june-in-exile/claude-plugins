@@ -65,10 +65,10 @@ The gaps leave room for labels: at 160 the labels cover the arrowheads. If a lab
 
 ## Card content
 
-Write every card in the user's language. The title is an H1, `<plain name>（<code or term>）`. The body runs from summary to detail, in this order, and ends on the last detail bullet:
+Write every card in the user's language. The title is an H1 with the thing's own name: the term the team actually uses. No parenthetical translation; explain the term in the summary instead. Use a translated title only when no such term exists. The body runs from summary to detail, in this order, and ends on the last detail bullet:
 
 1. **Summary**: one or two sentences saying what entity or concept this card IS, with one concrete example from the subject. The reader should be able to stop here and still place the card.
-2. **Naming caveat**, when the code name misleads or the thing goes by another name elsewhere: map every name the reader will meet (UI label, code name, the card title in the user's language) and say what the thing really is, as a sub-bullet under the summary. For example, a `Webhook` the UI lists as INTEGRATIONS, or a 投遞紀錄 card whose UI tab is Activity. A reader who knows the product from its UI cannot place a card titled with a translated or code name until the UI name is on it.
+2. **Naming caveat**, when the code name misleads or the thing goes by another name elsewhere: map every name the reader will meet (UI label, code name, the card title) and say what the thing really is, as a sub-bullet under the summary. For example, a Webhook card the UI lists under INTEGRATIONS, or a Delivery card whose UI tab is Activity. A reader who knows the product from its UI cannot place a card titled with a code name until the UI name is on it.
 3. **Relationships**: how this card relates to its neighbours, stated with cardinality and trigger. Cardinality: "one webhook has many deliveries; each delivery sends one event to one URL." Trigger: what sets it in motion (a scheduler, a button, another card). This is the part the reader came for; the edges show that a relationship exists, the card says what shape it has.
 4. **Detail**: what it holds or does, as bullets in the reader's words, each one placed under the sentence that introduces it.
 
@@ -89,11 +89,11 @@ The overview card states:
 A grounded card, for reference:
 
 ```
-# 通知設定（Webhook）
+# Webhook
 
-本質上是一筆「事件發生時要通知誰」的設定，例如訂單成立時通知倉庫系統。
+Webhook 本質上是一筆「事件發生時要通知誰」的設定，例如訂單成立時通知倉庫系統。
   - 名字容易誤會：介面上它列在 INTEGRATIONS 底下，不叫 Webhook。
-一筆設定可以產生多筆 @投遞紀錄（Delivery），每筆把一個事件送到它的網址。
+一筆設定可以產生多筆 @Delivery，每筆把一個事件送到它的網址。
   - 事件是系統裡發生的一件事，例如訂單成立。
 按下 Add webhook 會建立一筆設定，記三件事：
 - 要通知的網址

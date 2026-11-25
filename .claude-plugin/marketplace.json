@@ -10,7 +10,7 @@
       "name": "heptabase",
       "source": "./plugins/heptabase",
       "description": "Heptabase skills: create or update note cards and explain concepts on whiteboards.",
-      "version": "0.2.3"
+      "version": "0.2.4"
     },
     {
       "name": "develop",
