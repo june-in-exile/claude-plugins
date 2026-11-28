@@ -105,7 +105,11 @@ The user keeps cards as compact study notes, not prose. Write this way unless Sp
 
 ## Connecting cards on a whiteboard
 
-When you add connections between cards outside the `whiteboards` skill's grid layout, use `routeType: "curve"` by default. The `whiteboards` skill keeps its own straight-line grid style.
+When you place a new card on a whiteboard, connect it in the same run to the cards there it is closely related to: a card it extends, a card whose problem it solves, or a card it is a step of (e.g. SSTable → Compaction, SSTable → Bloom Filter). A mention in the text is not enough; the whiteboard should show the relationship too.
+
+- Give each connection a short label for the relationship ("滿了寫出", "讀取時跳過"), matching the labels already on that whiteboard.
+- Only connect close relationships; don't connect every card that mentions another.
+- Use `routeType: "curve"` by default. The `whiteboards` skill keeps its own straight-line grid style.
 
 ## Growing this skill
 
