@@ -22,10 +22,10 @@ Two jobs: **create** a note card from the user's description, or **update** an e
 ## Create a card
 
 1. **Get the source.** Use what the request points at: an article or text in the conversation, a URL (fetch and read the page), a local file, or a Heptabase object (find it with `search_by_keyword`, then `read_object` / `read_pdf`). If "這篇文章" has no clear referent, ask which one; don't guess.
-2. **Write the card.** Start with an H1 title that names the subject, not the task ("Rust 的所有權模型", not "文章摘要"). Then:
-   - a `來源` / Source line: the link or the source's title, so the card makes sense outside this conversation;
-   - the body the user asked for. For a summary, the default shape is: a 2–3 sentence TL;DR, then the key points as bullets (each a claim, not a topic label), then any concrete numbers, examples, or quotes worth keeping. Adapt the shape when the material calls for it (a table for comparisons, steps for a procedure).
-   - Cite Heptabase sources after each paragraph or bullet they support, using the citation syntax in `hepta_markdown`. Don't cite web pages or the user's own words that way; the Source line covers them.
+2. **Write the card** in the card style below. Start with an H1 title that names the subject, not the task ("Rust 的所有權模型", not "文章摘要"). Then:
+   - the body the user asked for. For a summary, the default shape is: a one-line core idea, then the key points as nested bullets (each a claim, not a topic label), then any concrete numbers or examples worth keeping. For a concept card: structure, its defining trait, pros and cons, the flow if there is one, then examples. Adapt the shape when the material calls for it (a table for comparisons, steps for a procedure).
+   - Cite Heptabase sources after each paragraph or bullet they support, using the citation syntax in `hepta_markdown`. Don't add a source or reference line for web pages or the conversation.
+   - When the material spans several topics, split it into 2–3 focused cards rather than one long card or one card per detail.
 3. **Create it** with `create_object` (`objectType: "card"`).
 4. **Place it** in the same reply, following the placement order in `knowledge_base_organization`: a destination the user named → a Space Instructions rule → a high-confidence placement (place it and say so in one sentence) → otherwise propose 2–3 real whiteboards or tags with a one-line reason each, "or tell me where you want it". After the user picks one, place it and offer once to save that choice as a placement rule in Space Instructions.
 5. **Show it**: call `render_cards` when the client supports it; otherwise give the title and a short outline in text.
@@ -87,6 +87,25 @@ Then `render_cards` (or a text summary) to show the result.
 - Follow the Hepta Markdown syntax; links to other cards use mentions with IDs from a tool result, never invented IDs.
 - No color unless the user asks for it.
 - A write that fails or times out may already be applied: read the card again before retrying, and never repeat `create_object` blindly, because each success makes another card.
+- After writing, say it's done in one line. Don't recap what changed; the user reads the card herself.
+
+## Card style
+
+The user keeps cards as compact study notes, not prose. Write this way unless Space Instructions say otherwise.
+
+- **Nested bullets, one point each.** Short items with sub-items. Drop connective filler (「這就叫…」「所以…」) and trailing periods.
+- **Half-width parentheses** with a space before them: `寫入墓碑 (tombstone)`, never `（）`.
+- **Side notes go in a quote block** (`> 補充：…`), so the main bullets stay the core idea.
+- **No source or reference line** at the bottom of a card.
+- **End with an arrow mention** instead of a "see X" sentence: `→ <hepta-mention …>Related card</hepta-mention>`.
+- **Mention every keyword that has its own card**, wherever it appears (WAL, fsync, B tree …). Before writing, list the cards on the same whiteboard or section so you know which keywords have cards; a keyword left as plain text is a broken link in her knowledge base.
+- **No duplicated content across cards.** Each idea lives in the one card it is most about; other cards mention that card instead of re-explaining it. When a new card takes over a topic, replace the old explanation elsewhere with a mention.
+- **Brief.** Cover the core ideas, not every detail; a lesson or topic is usually 2–3 cards.
+- **Diagrams help.** When a mechanism is easier to see than to read (a data structure, a flow between memory and disk), offer a diagram to go in the card.
+
+## Connecting cards on a whiteboard
+
+When you add connections between cards outside the `whiteboards` skill's grid layout, use `routeType: "curve"` by default. The `whiteboards` skill keeps its own straight-line grid style.
 
 ## Growing this skill
 
