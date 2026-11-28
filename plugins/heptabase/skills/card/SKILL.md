@@ -27,7 +27,7 @@ Two jobs: **create** a note card from the user's description, or **update** an e
    - Cite Heptabase sources after each paragraph or bullet they support, using the citation syntax in `hepta_markdown`. Don't add a source or reference line for web pages or the conversation.
    - When the material spans several topics, split it into 2–3 focused cards rather than one long card or one card per detail.
 3. **Create it** with `create_object` (`objectType: "card"`).
-4. **Place it** in the same reply, following the placement order in `knowledge_base_organization`: a destination the user named → a Space Instructions rule → a high-confidence placement (place it and say so in one sentence) → otherwise propose 2–3 real whiteboards or tags with a one-line reason each, "or tell me where you want it". After the user picks one, place it and offer once to save that choice as a placement rule in Space Instructions.
+4. **Place it** in the same reply, following the placement order in `knowledge_base_organization`: a destination the user named → a Space Instructions rule → a high-confidence placement (place it and say so in one sentence) → otherwise propose 2–3 real whiteboards or tags with a one-line reason each, "or tell me where you want it". After the user picks one, place it and offer once to save that choice as a placement rule in Space Instructions. Once it is on a whiteboard, connect it to its closely related cards there (see "Connecting cards on a whiteboard").
 5. **Show it**: call `render_cards` when the client supports it; otherwise give the title and a short outline in text.
 
 ## Update an existing card
@@ -98,14 +98,14 @@ The user keeps cards as compact study notes, not prose. Write this way unless Sp
 - **Side notes go in a quote block** (`> 補充：…`), so the main bullets stay the core idea.
 - **No source or reference line** at the bottom of a card.
 - **End with an arrow mention** instead of a "see X" sentence: `→ <hepta-mention …>Related card</hepta-mention>`.
-- **Mention every keyword that has its own card**, wherever it appears (WAL, fsync, B tree …). Before writing, list the cards on the same whiteboard or section so you know which keywords have cards; a keyword left as plain text is a broken link in her knowledge base.
+- **Mention every keyword that has its own card**, wherever it appears (WAL, fsync, B tree …). Before writing, list the cards on the same whiteboard or section (`read_whiteboard` in structure mode) so you know which keywords have cards; a keyword left as plain text is a broken link in her knowledge base. The same list tells you which cards to connect on the whiteboard.
 - **No duplicated content across cards.** Each idea lives in the one card it is most about; other cards mention that card instead of re-explaining it. When a new card takes over a topic, replace the old explanation elsewhere with a mention.
 - **Brief.** Cover the core ideas, not every detail; a lesson or topic is usually 2–3 cards.
 - **Diagrams help.** When a mechanism is easier to see than to read (a data structure, a flow between memory and disk), offer a diagram to go in the card.
 
 ## Connecting cards on a whiteboard
 
-When you place a new card on a whiteboard, connect it in the same run to the cards there it is closely related to: a card it extends, a card whose problem it solves, or a card it is a step of (e.g. SSTable → Compaction, SSTable → Bloom Filter). A mention in the text is not enough; the whiteboard should show the relationship too.
+When you place a new card on a whiteboard, connect it in the same run to the cards there it is closely related to: a card it extends, a card whose problem it solves, or a card it is a step of (e.g. SSTable → Compaction, SSTable → Bloom Filter). A mention in the text is not enough; the whiteboard should show the relationship too. Mentions and connections work together: mention a related card where the text names it, and draw a connection only for the close relationships.
 
 - Give each connection a short label for the relationship ("滿了寫出", "讀取時跳過"), matching the labels already on that whiteboard.
 - Only connect close relationships; don't connect every card that mentions another.
